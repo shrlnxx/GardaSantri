@@ -5,6 +5,7 @@ import { JudgeSimulatorHeader, type SimulatorView } from "@/components/judge-sim
 import { PanicWipeOverlay } from "@/components/panic-wipe-overlay";
 import { KioskGateway } from "@/components/kiosk-gateway";
 import { CrisisForm, type StudentProfile } from "@/components/crisis-form";
+import { FacilityForm } from "@/components/facility-form";
 import { ProofOfEncryption } from "@/components/proof-of-encryption";
 import { AdminKonselor } from "@/components/admin-konselor";
 import { AdminSarpras } from "@/components/admin-sarpras";
@@ -94,11 +95,13 @@ export default function HomePage() {
         if (barcodeScanContext === "CRISIS_FORM") {
           showToast(`KTS Terverifikasi: ${student.nama} (${student.kamar})`);
           setCrisisInitialMode("VERIFIED_KTS");
+          setCurrentView("crisis-form");
         } else if (barcodeScanContext === "GATEWAY_FACILITY") {
-          showToast(`Selamat datang ${student.nama}. Mengarahkan ke formulir Fasilitas Sarpras.`);
-          setCurrentView("admin-sarpras");
+          showToast(`KTS Terverifikasi: ${student.nama} (${student.kamar}). Mengarahkan ke formulir.`);
+          setCurrentView("facility-form");
         } else if (barcodeScanContext === "SARPRAS_ADMIN") {
-          showToast(`KTS Santri [${student.nama}] berhasil dipindai ke tiket.`);
+          showToast(`KTS Santri [${student.nama}] diverifikasi. Membuka formulir tiket.`);
+          setCurrentView("facility-form");
         }
       } else {
         // Fallback for custom unseeded barcode
@@ -110,6 +113,11 @@ export default function HomePage() {
           barcode: barcodeVal,
         };
         setVerifiedStudent(fallbackStudent);
+        if (barcodeScanContext === "GATEWAY_FACILITY" || barcodeScanContext === "SARPRAS_ADMIN") {
+          setCurrentView("facility-form");
+        } else {
+          setCurrentView("crisis-form");
+        }
         showToast(`Barcode [${barcodeVal}] dibaca. Profil santri diverifikasi.`);
       }
     } catch {
@@ -186,19 +194,6 @@ export default function HomePage() {
         }}
       />
 
-      {/* 3. Real Live Camera Barcode Scanner Modal */}
-      <BarcodeCameraModal
-        isOpen={isBarcodeModalOpen}
-        onClose={() => setIsBarcodeModalOpen(false)}
-        onScanSuccess={handleBarcodeScanned}
-        title={
-          barcodeScanContext === "CRISIS_FORM"
-            ? "Pindai Barcode KTS untuk Verifikasi Identitas"
-            : "Pemindai Barcode Kartu Tanda Santri (KTS)"
-        }
-        subtitle="Arahkan kamera ke barcode fisik KTS Anda. Algoritma pemindai akan mendeteksi secara instan."
-      />
-
       {/* 4. Main Body Content Based on Active Persona / View */}
       <main className="flex-1 pt-24 lg:pt-16">
         {/* If Active Proof of Encryption is showing for the Santri, display it directly */}
@@ -250,6 +245,16 @@ export default function HomePage() {
               />
             )}
 
+            {currentView === "facility-form" && (
+              <FacilityForm
+                verifiedStudent={verifiedStudent}
+                onBackToMain={() => setCurrentView("kiosk-main")}
+                onOpenBarcodeCamera={() => openCameraScanner("GATEWAY_FACILITY")}
+                onGoToSarprasBoard={() => setCurrentView("admin-sarpras")}
+                onShowToast={showToast}
+              />
+            )}
+
             {currentView === "admin-konselor" && (
               <AdminKonselor
                 liveRecords={liveRecords}
@@ -260,6 +265,7 @@ export default function HomePage() {
             {currentView === "admin-sarpras" && (
               <AdminSarpras
                 onOpenBarcodeCamera={() => openCameraScanner("SARPRAS_ADMIN")}
+                onOpenFacilityForm={() => setCurrentView("facility-form")}
                 onShowToast={showToast}
               />
             )}

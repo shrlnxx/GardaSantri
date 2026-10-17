@@ -18,10 +18,11 @@ interface SarprasTicket {
 
 interface AdminSarprasProps {
   onOpenBarcodeCamera: () => void;
+  onOpenFacilityForm?: () => void;
   onShowToast: (message: string) => void;
 }
 
-export function AdminSarpras({ onOpenBarcodeCamera, onShowToast }: AdminSarprasProps) {
+export function AdminSarpras({ onOpenBarcodeCamera, onOpenFacilityForm, onShowToast }: AdminSarprasProps) {
   const [tickets, setTickets] = useState<SarprasTicket[]>([
     {
       id: "#TK-2026-081",
@@ -107,13 +108,23 @@ export function AdminSarpras({ onOpenBarcodeCamera, onShowToast }: AdminSarprasP
             <span>Scan Barcode KTS</span>
           </Button>
 
+          {onOpenFacilityForm && (
+            <Button
+              variant="outline"
+              onClick={onOpenFacilityForm}
+              className="flex items-center justify-center space-x-1.5 w-full sm:w-auto text-slate-700 hover:text-slate-900 border-slate-300"
+            >
+              <Plus className="w-4 h-4" />
+              <span>Input Tiket Manual</span>
+            </Button>
+          )}
+
           <Button
-            variant="outline"
+            variant="ghost"
             onClick={handleSimulateAdd}
-            className="flex items-center justify-center space-x-1.5 w-full sm:w-auto"
+            className="flex items-center justify-center space-x-1.5 w-full sm:w-auto text-slate-500 hover:text-slate-800 text-xs"
           >
-            <Plus className="w-4 h-4" />
-            <span>Simulasi Cepat</span>
+            <span>+ Demo Cepat</span>
           </Button>
         </div>
       </div>

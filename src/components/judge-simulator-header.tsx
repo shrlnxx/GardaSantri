@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 export type SimulatorView =
   | "kiosk-main"
   | "crisis-form"
+  | "facility-form"
   | "admin-konselor"
   | "admin-sarpras"
   | "admin-kiai"
@@ -31,7 +32,10 @@ export function JudgeSimulatorHeader({
       id: "kiosk-main" as SimulatorView,
       label: "Kiosk Santri",
       icon: <Monitor className="w-3.5 h-3.5" />,
-      active: currentView === "kiosk-main" || currentView === "crisis-form",
+      active:
+        currentView === "kiosk-main" ||
+        currentView === "crisis-form" ||
+        currentView === "facility-form",
     },
     {
       id: "kts-cards" as SimulatorView,
@@ -83,7 +87,7 @@ export function JudgeSimulatorHeader({
                 GardaSantri
               </span>
               <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-emerald-950 text-emerald-400 border border-emerald-800/60 hidden sm:inline">
-                SIMULATOR
+                SIMULATOR PENJURIAN
               </span>
             </div>
             <span className="text-[9px] sm:text-[10px] text-emerald-400/90 font-mono tracking-wider leading-none truncate max-w-[150px] sm:max-w-none">
