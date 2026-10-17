@@ -2,7 +2,23 @@ import { DatabaseSync } from "node:sqlite";
 import path from "node:path";
 import fs from "node:fs";
 
-const dbPath = process.env.DATABASE_PATH || path.join(process.cwd(), "data", "sovereign-kiosk.db");
+const isServerless = Boolean(
+  process.env.VERCEL ||
+  process.env.AWS_LAMBDA_FUNCTION_NAME ||
+  process.env.NETLIFY ||
+  process.env.RENDER
+);
+
+function getDatabasePath(): string {
+  if (process.env.DATABASE_PATH) {
+    return process.env.DATABASE_PATH;
+  }
+  if (isServerless) {
+    return path.join("/tmp", "sovereign-kiosk.db");
+  }
+  return path.join(process.cwd(), "data", "sovereign-kiosk.db");
+}
+
 
 let dbInstance: DatabaseSync | null = null;
 
@@ -114,11 +130,36 @@ function initSchema(db: DatabaseSync) {
 
 export function getDatabase(): DatabaseSync {
   if (!dbInstance) {
-    const dir = path.dirname(dbPath);
-    if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir, { recursive: true });
+    let chosenPath = getDatabasePath();
+    let dir = path.dirname(chosenPath);
+
+    try {
+      if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir, { recursive: true });
+      }
+    } catch {
+      // If mkdir fails (e.g. read-only filesystem on Vercel), fallback to /tmp
+      chosenPath = path.join("/tmp", "sovereign-kiosk.db");
+      dir = path.dirname(chosenPath);
+      try {
+        if (!fs.existsSync(dir)) {
+          fs.mkdirSync(dir, { recursive: true });
+        }
+      } catch {
+        // ignore
+      }
     }
-    dbInstance = new DatabaseSync(dbPath);
+
+    try {
+      dbInstance = new DatabaseSync(chosenPath);
+    } catch {
+      try {
+        dbInstance = new DatabaseSync(path.join("/tmp", "sovereign-kiosk.db"));
+      } catch {
+        dbInstance = new DatabaseSync(":memory:");
+      }
+    }
+
     initSchema(dbInstance);
   }
   return dbInstance;

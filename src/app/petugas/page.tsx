@@ -209,8 +209,11 @@ export default function PetugasDashboardPage() {
         setIsAuthenticated(true);
         setPinInput("");
         showToast("Otorisasi Petugas Berhasil. Selamat bertugas di Posko.");
-      } else {
+      } else if (res.status === 401) {
         setPinError("PIN Petugas tidak valid! Akses ditolak.");
+      } else {
+        const errorData = await res.json().catch(() => ({}));
+        setPinError(errorData.error || `Terjadi kesalahan server (${res.status}). Silakan coba lagi.`);
       }
     } catch {
       setPinError("Koneksi gagal saat memverifikasi PIN.");
