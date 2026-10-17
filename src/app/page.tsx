@@ -200,7 +200,7 @@ export default function HomePage() {
       />
 
       {/* 4. Main Body Content Based on Active Persona / View */}
-      <main className="flex-1 pt-16">
+      <main className="flex-1 pt-24 lg:pt-16">
         {/* If Active Proof of Encryption is showing for the Santri, display it directly */}
         {activeProofRecord ? (
           <ProofOfEncryption

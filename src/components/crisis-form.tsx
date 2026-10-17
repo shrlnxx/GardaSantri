@@ -162,34 +162,34 @@ export function CrisisForm({
   };
 
   return (
-    <section className="max-w-4xl mx-auto min-h-[calc(100vh-4rem)] pt-6 pb-16 px-4 sm:px-6">
+    <section className="max-w-4xl mx-auto min-h-[calc(100vh-6rem)] pt-2 sm:pt-6 pb-12 sm:pb-16 px-3.5 sm:px-6">
       {/* Navigation & Security Banner */}
-      <div className="flex items-center justify-between border-b border-slate-200 pb-4 mb-6">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 sm:gap-4 border-b border-slate-200 pb-4 mb-4 sm:mb-6">
         <Button
           variant="secondary"
           size="sm"
           onClick={onBackToMain}
-          className="flex items-center space-x-2 text-slate-700 hover:text-slate-900"
+          className="flex items-center justify-center space-x-2 text-slate-700 hover:text-slate-900 w-full sm:w-auto"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Kembali ke Menu Utama</span>
         </Button>
 
-        <div className="flex items-center space-x-2 text-xs font-mono text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200 shadow-sm">
-          <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 animate-pulse" />
-          <span>RAM-Only Buffer • WebCrypto AES-GCM • Anti-Snoop</span>
+        <div className="flex items-center justify-center space-x-2 text-[11px] sm:text-xs font-mono text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-full border border-emerald-200 shadow-sm text-center">
+          <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 animate-pulse shrink-0" />
+          <span className="truncate">RAM-Only Buffer • WebCrypto AES-GCM • Anti-Snoop</span>
         </div>
       </div>
 
       {/* Main Form Card Container */}
-      <div className="bg-white/95 backdrop-blur-md rounded-3xl p-6 md:p-10 shadow-xl shadow-slate-200/60 border border-slate-100 relative">
+      <div className="bg-white/95 backdrop-blur-md rounded-3xl p-4 sm:p-7 md:p-10 shadow-xl shadow-slate-200/60 border border-slate-100 relative">
         {/* Mode Switcher Tabs Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-5 sm:pb-6">
           <div>
-            <span className="text-xs font-mono uppercase tracking-widest text-rose-600 font-bold bg-rose-50 px-3 py-1 rounded-full border border-rose-200 shadow-sm">
+            <span className="text-[10px] sm:text-xs font-mono uppercase tracking-widest text-rose-600 font-bold bg-rose-50 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full border border-rose-200 shadow-sm">
               Pintu Perlindungan &amp; Advokasi Santri
             </span>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 mt-2">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 mt-2">
               Formulir Pelaporan Insiden &amp; Krisis
             </h2>
             <p className="text-xs sm:text-sm text-slate-500 mt-1">
@@ -198,29 +198,29 @@ export function CrisisForm({
           </div>
 
           {/* Dual Mode Toggle Pills */}
-          <div className="bg-slate-100 p-1.5 rounded-2xl flex items-center border border-slate-200 self-start sm:self-auto shadow-inner">
+          <div className="bg-slate-100 p-1 sm:p-1.5 rounded-2xl flex items-center border border-slate-200 w-full sm:w-auto shadow-inner">
             <button
               type="button"
               onClick={() => setCrisisMode("ANONYMOUS")}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all duration-300 flex items-center space-x-2 ${
+              className={`flex-1 sm:flex-initial px-3 sm:px-4 py-2 sm:py-2 rounded-xl text-xs font-bold transition-all duration-200 flex items-center justify-center space-x-1.5 sm:space-x-2 ${
                 crisisMode === "ANONYMOUS"
                   ? "bg-slate-900 text-white shadow-sm"
                   : "text-slate-600 hover:text-slate-900"
               }`}
             >
-              <Lock className="w-3.5 h-3.5" />
+              <Lock className="w-3.5 h-3.5 shrink-0" />
               <span>100% Anonim</span>
             </button>
             <button
               type="button"
               onClick={() => setCrisisMode("VERIFIED_KTS")}
-              className={`px-4 py-2 rounded-xl text-xs font-bold transition-all duration-300 flex items-center space-x-2 ${
+              className={`flex-1 sm:flex-initial px-3 sm:px-4 py-2 sm:py-2 rounded-xl text-xs font-bold transition-all duration-200 flex items-center justify-center space-x-1.5 sm:space-x-2 ${
                 crisisMode === "VERIFIED_KTS"
                   ? "bg-emerald-600 text-white shadow-sm"
                   : "text-slate-600 hover:text-slate-900"
               }`}
             >
-              <BadgeCheck className="w-3.5 h-3.5" />
+              <BadgeCheck className="w-3.5 h-3.5 shrink-0" />
               <span>Terverifikasi (KTS)</span>
             </button>
           </div>
@@ -228,10 +228,10 @@ export function CrisisForm({
 
         {/* 100% ANONYMOUS ZERO-KNOWLEDGE BANNER */}
         {crisisMode === "ANONYMOUS" && (
-          <div className="mt-6 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 rounded-2xl p-5 border border-slate-700/80 shadow-md">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="mt-4 sm:mt-6 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 rounded-2xl p-4 sm:p-5 border border-slate-700/80 shadow-md">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4">
               <div className="flex items-start space-x-3.5">
-                <div className="w-11 h-11 rounded-2xl bg-rose-500/20 border border-rose-500/40 text-rose-400 flex items-center justify-center shrink-0 mt-0.5">
+                <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-rose-500/20 border border-rose-500/40 text-rose-400 flex items-center justify-center shrink-0 mt-0.5">
                   <Lock className="w-5 h-5 animate-pulse" />
                 </div>
                 <div>
@@ -522,11 +522,11 @@ export function CrisisForm({
           <label className="block text-xs font-mono uppercase tracking-wider text-slate-500 font-semibold mb-3">
             2. Tingkat Urgensi Intervensi *
           </label>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3">
             <button
               type="button"
               onClick={() => setUrgency("CRITICAL")}
-              className={`p-4 rounded-full border-2 text-center font-bold text-xs uppercase tracking-wider transition-all duration-300 active:scale-95 shadow-sm ${
+              className={`py-3 px-3 sm:py-3.5 sm:px-4 rounded-xl sm:rounded-full border-2 text-center font-bold text-[11px] sm:text-xs uppercase tracking-wider transition-all duration-200 active:scale-95 shadow-sm ${
                 urgency === "CRITICAL"
                   ? "bg-slate-900 text-white border-slate-900 shadow-md"
                   : "border-slate-200 hover:border-rose-500 hover:bg-rose-50 text-slate-700"
@@ -537,7 +537,7 @@ export function CrisisForm({
             <button
               type="button"
               onClick={() => setUrgency("MEDIUM")}
-              className={`p-4 rounded-full border-2 text-center font-bold text-xs uppercase tracking-wider transition-all duration-300 active:scale-95 shadow-sm ${
+              className={`py-3 px-3 sm:py-3.5 sm:px-4 rounded-xl sm:rounded-full border-2 text-center font-bold text-[11px] sm:text-xs uppercase tracking-wider transition-all duration-200 active:scale-95 shadow-sm ${
                 urgency === "MEDIUM"
                   ? "bg-slate-900 text-white border-slate-900 shadow-md"
                   : "border-slate-200 hover:border-amber-500 hover:bg-amber-50 text-slate-700"
@@ -548,13 +548,13 @@ export function CrisisForm({
             <button
               type="button"
               onClick={() => setUrgency("LOW")}
-              className={`p-4 rounded-full border-2 text-center font-bold text-xs uppercase tracking-wider transition-all duration-300 active:scale-95 shadow-sm ${
+              className={`py-3 px-3 sm:py-3.5 sm:px-4 rounded-xl sm:rounded-full border-2 text-center font-bold text-[11px] sm:text-xs uppercase tracking-wider transition-all duration-200 active:scale-95 shadow-sm ${
                 urgency === "LOW"
                   ? "bg-slate-900 text-white border-slate-900 shadow-md"
                   : "border-slate-200 hover:border-blue-500 hover:bg-blue-50 text-slate-700"
               }`}
             >
-              LOW (Konseling Terjadwal)
+              LOW (Terjadwal)
             </button>
           </div>
         </div>
@@ -567,7 +567,7 @@ export function CrisisForm({
           <select
             value={alibi}
             onChange={(e) => setAlibi(e.target.value)}
-            className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all"
+            className="w-full bg-slate-50 border border-slate-200 rounded-2xl px-4 py-3 text-sm sm:text-base text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all"
           >
             <option value="medical">Alibi Medis: Pemeriksaan Rutin Poskestren (Klinik Santri)</option>
             <option value="tahfidz">Alibi Akademik: Evaluasi Setoran Tahfidz &amp; Tajwid</option>
@@ -588,13 +588,13 @@ export function CrisisForm({
             onChange={(e) => setNarrative(e.target.value)}
             placeholder="Contoh: Terjadi di lorong asrama barat lantai 2 sehabis jamaah isya..."
             rows={3}
-            className="w-full bg-slate-50 border border-slate-200 rounded-2xl p-4 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-rose-500 transition-all font-sans"
+            className="w-full bg-slate-50 border border-slate-200 rounded-2xl p-4 text-sm sm:text-base text-slate-800 focus:outline-none focus:ring-2 focus:ring-rose-500 transition-all font-sans"
           />
         </div>
 
         {/* Encrypt & Submit Button */}
-        <div className="mt-8 pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="text-xs text-slate-400 font-mono">
+        <div className="mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+          <div className="text-[11px] sm:text-xs text-slate-400 font-mono text-center sm:text-left">
             {crisisMode === "VERIFIED_KTS"
               ? "Identitas KTS dilindungi komitmen perlindungan santri & hanya dibuka sesuai persetujuan di atas."
               : "Mode Zero-Knowledge: Tidak ada nama, KTS, log kamera, ataupun IP yang tersimpan di server."}
@@ -606,20 +606,20 @@ export function CrisisForm({
             size="lg"
             disabled={isSubmitting}
             onClick={handleSubmit}
-            className="w-full sm:w-auto px-8 py-4 bg-slate-950 hover:bg-slate-800 text-white rounded-full font-bold text-sm tracking-wide shadow-xl flex items-center justify-center space-x-2"
+            className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-slate-950 hover:bg-slate-800 text-white rounded-xl sm:rounded-full font-bold text-xs sm:text-sm tracking-wide shadow-xl flex items-center justify-center space-x-2 shrink-0 active:scale-98"
           >
             {isSubmitting ? (
               <>
                 <Loader2 className="w-4 h-4 animate-spin text-emerald-400" />
-                <span>Membangkitkan Entropi &amp; Mengenkripsi...</span>
+                <span>Membangkitkan Entropi...</span>
               </>
             ) : (
               <>
                 <Key className="w-4 h-4 text-emerald-400 animate-pulse" />
-                <span>
+                <span className="truncate">
                   {crisisMode === "VERIFIED_KTS"
-                    ? "Kirim Laporan Terverifikasi KTS (Enkripsi Proteksi Santri)"
-                    : "Generate 8-Digit Token & Encrypt Payload"}
+                    ? "Kirim Laporan Terverifikasi KTS"
+                    : "Generate Token & Encrypt"}
                 </span>
               </>
             )}

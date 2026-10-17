@@ -80,37 +80,37 @@ export function AdminSarpras({ onOpenBarcodeCamera, onShowToast }: AdminSarprasP
   };
 
   return (
-    <section className="max-w-7xl mx-auto min-h-[calc(100vh-4rem)] pt-6 pb-16 px-4 sm:px-6">
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200 pb-6 mb-8">
+    <section className="max-w-7xl mx-auto min-h-[calc(100vh-6rem)] pt-2 sm:pt-6 pb-12 sm:pb-16 px-3.5 sm:px-6">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200 pb-5 sm:pb-6 mb-6 sm:mb-8">
         <div>
           <div className="flex items-center space-x-2">
-            <span className="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
-              Divisi Sarana, Prasarana &amp; Logistik Pesantren
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse shrink-0"></span>
+            <span className="text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+              Divisi Sarana, Prasarana &amp; Logistik
             </span>
           </div>
-          <h2 className="text-3xl font-extrabold text-slate-900 mt-2">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 mt-2">
             Daftar Tiket Kerusakan Fasilitas (Barcode KTS Scanned)
           </h2>
-          <p className="text-sm text-slate-500 mt-1">
+          <p className="text-xs sm:text-sm text-slate-500 mt-1">
             Data terekam resmi melalui pemindaian barcode santri untuk verifikasi lapangan teknisi maintenance pondok.
           </p>
         </div>
 
-        <div className="flex items-center space-x-3">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 w-full md:w-auto shrink-0">
           <Button
             variant="emerald"
             onClick={onOpenBarcodeCamera}
-            className="flex items-center space-x-2 shadow-sm"
+            className="flex items-center justify-center space-x-2 shadow-sm w-full sm:w-auto"
           >
             <ScanBarcode className="w-4 h-4" />
-            <span>Buka Kamera Scan Barcode</span>
+            <span>Scan Barcode KTS</span>
           </Button>
 
           <Button
             variant="outline"
             onClick={handleSimulateAdd}
-            className="flex items-center space-x-1.5"
+            className="flex items-center justify-center space-x-1.5 w-full sm:w-auto"
           >
             <Plus className="w-4 h-4" />
             <span>Simulasi Cepat</span>

@@ -97,27 +97,27 @@ export function KartuTandaSantriViewer({
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+    <div className="max-w-6xl mx-auto px-3.5 sm:px-6 py-4 sm:py-8">
       {/* Header Info */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between pb-6 mb-8 border-b border-slate-200 gap-4 print:hidden">
+      <div className="flex flex-col md:flex-row md:items-center justify-between pb-4 sm:pb-6 mb-6 sm:mb-8 border-b border-slate-200 gap-3 sm:gap-4 print:hidden">
         <div>
-          <div className="inline-flex items-center space-x-2 bg-emerald-50 text-emerald-800 text-xs font-semibold px-3 py-1 rounded-full border border-emerald-200 mb-2">
+          <div className="inline-flex items-center space-x-2 bg-emerald-50 text-emerald-800 text-[11px] sm:text-xs font-semibold px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full border border-emerald-200 mb-2">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
             <span>Standar Kartu Identitas Fisik Santri (KTS)</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">
             Contoh Kartu Tanda Santri dengan Barcode Fisik
           </h2>
-          <p className="text-slate-600 text-sm mt-1 max-w-2xl">
+          <p className="text-slate-600 text-xs sm:text-sm mt-1 max-w-2xl leading-relaxed">
             Barcode Code 128 di bawah ini merupakan <strong>barcode aktif dan nyata</strong>. Anda dapat mengarahkan kamera kiosk atau barcode scanner langsung ke layar ini untuk menguji verifikasi otomatis.
           </p>
         </div>
 
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center space-x-3 w-full sm:w-auto shrink-0">
           <Button
             onClick={handlePrint}
             variant="outline"
-            className="flex items-center space-x-2 border-slate-300 text-slate-700 hover:bg-slate-100"
+            className="w-full sm:w-auto flex items-center justify-center space-x-2 border-slate-300 text-slate-700 hover:bg-slate-100"
           >
             <Printer className="w-4 h-4" />
             <span>Cetak 3 Kartu (PDF)</span>

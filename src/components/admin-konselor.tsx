@@ -76,64 +76,64 @@ export function AdminKonselor({ liveRecords, onShowToast }: AdminKonselorProps) 
   const activeAnonCount = liveList.filter((r) => r.payload.mode === "ANONYMOUS").length + 1;
 
   return (
-    <section className="max-w-7xl mx-auto min-h-[calc(100vh-4rem)] pt-6 pb-16 px-4 sm:px-6">
+    <section className="max-w-7xl mx-auto min-h-[calc(100vh-6rem)] pt-2 sm:pt-6 pb-12 sm:pb-16 px-3.5 sm:px-6">
       {/* Board Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200 pb-6 mb-6">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200 pb-5 sm:pb-6 mb-5 sm:mb-6">
         <div>
           <div className="flex items-center space-x-2">
-            <span className="w-3 h-3 rounded-full bg-rose-500 animate-pulse"></span>
-            <span className="text-xs font-mono font-bold uppercase tracking-wider text-rose-700 bg-rose-50 px-2.5 py-0.5 rounded-full border border-rose-200">
-              Pusat Komando Konseling &amp; Satgas Anti-Kekerasan
+            <span className="w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse shrink-0"></span>
+            <span className="text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider text-rose-700 bg-rose-50 px-2.5 py-0.5 rounded-full border border-rose-200 truncate">
+              Komando Konseling &amp; Satgas
             </span>
           </div>
-          <h2 className="text-3xl font-extrabold text-slate-900 mt-2">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 mt-2">
             Ruang Perlindungan Santri — Konselor Board
           </h2>
-          <p className="text-sm text-slate-500 mt-1">
+          <p className="text-xs sm:text-sm text-slate-500 mt-1">
             Menangani laporan darurat: Tiket <strong>Anonim (Zero-Knowledge)</strong> tanpa data pengenal, serta Tiket <strong>Terverifikasi KTS</strong> untuk intervensi personal langsung.
           </p>
         </div>
 
         {/* Quick Status Metrics */}
-        <div className="flex items-center space-x-3">
-          <div className="bg-white border border-slate-200 p-3 px-5 rounded-2xl shadow-sm text-center">
-            <span className="text-[10px] font-mono text-slate-400 uppercase block">Tiket KTS Aktif</span>
-            <span className="text-xl font-bold text-emerald-600 font-mono">{activeKtsCount} Kasus</span>
+        <div className="grid grid-cols-3 gap-2 sm:gap-3 w-full md:w-auto shrink-0">
+          <div className="bg-white border border-slate-200 p-2 sm:p-3 sm:px-4 rounded-2xl shadow-sm text-center">
+            <span className="text-[9px] sm:text-[10px] font-mono text-slate-400 uppercase block truncate">Tiket KTS</span>
+            <span className="text-base sm:text-xl font-bold text-emerald-600 font-mono">{activeKtsCount} Kasus</span>
           </div>
-          <div className="bg-white border border-slate-200 p-3 px-5 rounded-2xl shadow-sm text-center">
-            <span className="text-[10px] font-mono text-slate-400 uppercase block">Tiket Anonim</span>
-            <span className="text-xl font-bold text-rose-600 font-mono">{activeAnonCount} Kasus</span>
+          <div className="bg-white border border-slate-200 p-2 sm:p-3 sm:px-4 rounded-2xl shadow-sm text-center">
+            <span className="text-[9px] sm:text-[10px] font-mono text-slate-400 uppercase block truncate">Tiket Anon</span>
+            <span className="text-base sm:text-xl font-bold text-rose-600 font-mono">{activeAnonCount} Kasus</span>
           </div>
-          <div className="bg-white border border-slate-200 p-3 px-5 rounded-2xl shadow-sm text-center">
-            <span className="text-[10px] font-mono text-slate-400 uppercase block">Rata-rata SLA</span>
-            <span className="text-xl font-bold text-slate-800 font-mono">3.4 Jam</span>
+          <div className="bg-white border border-slate-200 p-2 sm:p-3 sm:px-4 rounded-2xl shadow-sm text-center">
+            <span className="text-[9px] sm:text-[10px] font-mono text-slate-400 uppercase block truncate">Rata SLA</span>
+            <span className="text-base sm:text-xl font-bold text-slate-800 font-mono">3.4 Jam</span>
           </div>
         </div>
       </div>
 
       {/* Filter Tabs */}
-      <div className="flex flex-wrap items-center justify-between gap-3 mb-6 bg-slate-100/90 p-2 rounded-2xl border border-slate-200 shadow-sm">
-        <div className="flex items-center space-x-2">
-          <span className="text-xs font-mono uppercase text-slate-500 font-semibold px-2">Filter Laporan:</span>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5 sm:mb-6 bg-slate-100/90 p-1.5 sm:p-2 rounded-2xl border border-slate-200 shadow-sm overflow-x-auto scrollbar-none">
+        <div className="flex items-center space-x-1.5 sm:space-x-2 min-w-max">
+          <span className="text-xs font-mono uppercase text-slate-500 font-semibold px-1 sm:px-2 hidden sm:inline">Filter:</span>
           <button
             onClick={() => setFilter("ALL")}
-            className={`px-4 py-1.5 rounded-xl text-xs font-bold transition-all ${
+            className={`px-3 sm:px-4 py-1.5 rounded-xl text-xs font-bold transition-all ${
               filter === "ALL" ? "bg-slate-900 text-white shadow-sm" : "text-slate-600 hover:text-slate-900"
             }`}
           >
-            Semua Laporan ({liveList.length + 3})
+            Semua ({liveList.length + 3})
           </button>
           <button
             onClick={() => setFilter("ANON")}
-            className={`px-4 py-1.5 rounded-xl text-xs font-bold transition-all ${
+            className={`px-3 sm:px-4 py-1.5 rounded-xl text-xs font-bold transition-all ${
               filter === "ANON" ? "bg-slate-900 text-white shadow-sm" : "text-slate-600 hover:text-slate-900"
             }`}
           >
-            100% Anonim (Zero-Knowledge)
+            Anonim
           </button>
           <button
             onClick={() => setFilter("KTS")}
-            className={`px-4 py-1.5 rounded-xl text-xs font-bold transition-all ${
+            className={`px-3 sm:px-4 py-1.5 rounded-xl text-xs font-bold transition-all ${
               filter === "KTS" ? "bg-emerald-700 text-white shadow-sm" : "text-slate-600 hover:text-slate-900"
             }`}
           >
@@ -141,8 +141,8 @@ export function AdminKonselor({ liveRecords, onShowToast }: AdminKonselorProps) 
           </button>
         </div>
 
-        <div className="text-xs font-mono text-slate-500 flex items-center space-x-1 px-2">
-          <Badge variant="emerald">Audit Trail Terenkripsi SHA-256</Badge>
+        <div className="text-[10px] sm:text-xs font-mono text-slate-500 flex items-center space-x-1 px-1 sm:px-2 shrink-0">
+          <Badge variant="emerald">Audit SHA-256</Badge>
         </div>
       </div>
 

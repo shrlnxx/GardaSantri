@@ -400,13 +400,13 @@ export default function PetugasDashboardPage() {
   // RENDER PIN AUTHENTICATION GATE IF NOT AUTHORIZED
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen bg-[#03170e] text-slate-100 flex flex-col justify-between p-6 sm:p-12 relative overflow-hidden selection:bg-emerald-500 selection:text-white">
+      <div className="min-h-screen bg-[#03170e] text-slate-100 flex flex-col justify-between p-4 sm:p-8 md:p-12 relative overflow-y-auto selection:bg-emerald-500 selection:text-white">
         {/* Background Subtle Ambient */}
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[360px] bg-emerald-500/10 blur-[130px] rounded-full pointer-events-none" />
 
-        <div className="w-full max-w-md mx-auto my-auto relative z-10 flex flex-col items-center">
+        <div className="w-full max-w-md mx-auto my-auto relative z-10 flex flex-col items-center py-4">
           {/* Logo & Header */}
-          <div className="w-16 h-16 rounded-2xl bg-white p-2 shadow-2xl border-2 border-emerald-500/50 flex items-center justify-center mb-4">
+          <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white p-1.5 shadow-2xl border-2 border-emerald-500/50 flex items-center justify-center mb-3 sm:mb-4">
             <img
               src="/logo-shirothul-fuqoha.png"
               alt="Logo PP Salafiyah Shirothul Fuqoha Malang"
@@ -414,21 +414,21 @@ export default function PetugasDashboardPage() {
             />
           </div>
 
-          <div className="text-center mb-6">
+          <div className="text-center mb-4 sm:mb-6">
             <span className="text-[10px] font-mono uppercase tracking-widest text-emerald-400 bg-emerald-950/80 px-3 py-1 rounded-full border border-emerald-800">
               Gerbang Otorisasi Petugas Posko
             </span>
             <h1 className="text-xl sm:text-2xl font-bold text-white mt-2">
               Workstation Konselor &amp; Satgas
             </h1>
-            <p className="text-xs text-slate-400 mt-1 max-w-sm">
+            <p className="text-xs text-slate-400 mt-1 max-w-sm px-2">
               PP Salafiyah Shirothul Fuqoha&apos; Malang. Masukkan PIN keamanan untuk mengakses data penanganan santri.
             </p>
           </div>
 
           {/* PIN Input Box */}
-          <div className="w-full bg-slate-900/95 border border-slate-700/80 rounded-3xl p-6 sm:p-8 shadow-2xl backdrop-blur-xl">
-            <form onSubmit={(e) => { e.preventDefault(); handleVerifyPin(); }} className="space-y-5">
+          <div className="w-full bg-slate-900/95 border border-slate-700/80 rounded-3xl p-5 sm:p-8 shadow-2xl backdrop-blur-xl">
+            <form onSubmit={(e) => { e.preventDefault(); handleVerifyPin(); }} className="space-y-4 sm:space-y-5">
               <div>
                 <label className="block text-xs font-mono uppercase tracking-wider text-slate-300 font-semibold mb-2 text-center">
                   PIN Keamanan Petugas
@@ -467,7 +467,7 @@ export default function PetugasDashboardPage() {
                     key={num}
                     type="button"
                     onClick={() => { setPinInput((prev) => (prev.length < 8 ? prev + num : prev)); setPinError(null); }}
-                    className="h-12 rounded-xl bg-slate-800 hover:bg-slate-700 active:scale-95 text-white font-mono font-bold text-lg border border-slate-700/60 transition-all"
+                    className="h-11 sm:h-12 rounded-xl bg-slate-800 hover:bg-slate-700 active:scale-95 text-white font-mono font-bold text-base sm:text-lg border border-slate-700/60 transition-all"
                   >
                     {num}
                   </button>
@@ -475,21 +475,21 @@ export default function PetugasDashboardPage() {
                 <button
                   type="button"
                   onClick={() => setPinInput("")}
-                  className="h-12 rounded-xl bg-slate-800/60 hover:bg-slate-700 text-slate-400 text-xs font-bold border border-slate-700/40 transition-all"
+                  className="h-11 sm:h-12 rounded-xl bg-slate-800/60 hover:bg-slate-700 text-slate-400 text-xs font-bold border border-slate-700/40 transition-all"
                 >
                   Hapus
                 </button>
                 <button
                   type="button"
                   onClick={() => { setPinInput((prev) => (prev.length < 8 ? prev + "0" : prev)); setPinError(null); }}
-                  className="h-12 rounded-xl bg-slate-800 hover:bg-slate-700 active:scale-95 text-white font-mono font-bold text-lg border border-slate-700/60 transition-all"
+                  className="h-11 sm:h-12 rounded-xl bg-slate-800 hover:bg-slate-700 active:scale-95 text-white font-mono font-bold text-base sm:text-lg border border-slate-700/60 transition-all"
                 >
                   0
                 </button>
                 <button
                   type="button"
                   onClick={() => setPinInput((prev) => prev.slice(0, -1))}
-                  className="h-12 rounded-xl bg-slate-800/60 hover:bg-slate-700 text-slate-400 text-xs font-bold border border-slate-700/40 transition-all"
+                  className="h-11 sm:h-12 rounded-xl bg-slate-800/60 hover:bg-slate-700 text-slate-400 text-xs font-bold border border-slate-700/40 transition-all"
                 >
                   ←
                 </button>
@@ -498,7 +498,7 @@ export default function PetugasDashboardPage() {
               <Button
                 type="submit"
                 disabled={isVerifyingPin}
-                className="w-full h-12 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl shadow-lg shadow-emerald-950 transition-all active:scale-98"
+                className="w-full h-11 sm:h-12 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl shadow-lg shadow-emerald-950 transition-all active:scale-98"
               >
                 {isVerifyingPin ? (
                   <div className="flex items-center space-x-2">
@@ -513,7 +513,7 @@ export default function PetugasDashboardPage() {
                 )}
               </Button>
 
-              <div className="pt-2 text-center">
+              <div className="pt-1 text-center">
                 <span className="text-[11px] text-slate-500 font-mono">
                   PIN Standar Default Sistem: <strong className="text-emerald-400">1926</strong>
                 </span>
@@ -521,7 +521,7 @@ export default function PetugasDashboardPage() {
             </form>
           </div>
 
-          <div className="mt-6 text-center">
+          <div className="mt-5 sm:mt-6 text-center">
             <Link
               href="/"
               className="text-xs font-semibold text-slate-400 hover:text-emerald-400 transition-colors inline-flex items-center space-x-1"
@@ -531,7 +531,7 @@ export default function PetugasDashboardPage() {
           </div>
         </div>
 
-        <footer className="text-center text-[10px] text-slate-500 font-mono relative z-10">
+        <footer className="text-center text-[10px] text-slate-500 font-mono relative z-10 py-2">
           GardaSantri Kiosk : Tempat Pelaporan Santri Yang Aman • Workstation Petugas Posko
         </footer>
       </div>
@@ -541,9 +541,9 @@ export default function PetugasDashboardPage() {
   return (
     <div className="min-h-screen bg-slate-900 text-slate-100 flex flex-col selection:bg-emerald-500 selection:text-white">
       {/* 1. Official Header */}
-      <header className="h-16 bg-slate-950 border-b border-slate-800 px-4 sm:px-8 flex items-center justify-between sticky top-0 z-50 shadow-md">
-        <div className="flex items-center space-x-4">
-          <div className="w-10 h-10 rounded-xl bg-white p-1 shadow-md border border-emerald-500/50 flex items-center justify-center shrink-0">
+      <header className="h-auto min-h-[4rem] py-2.5 bg-slate-950 border-b border-slate-800 px-3 sm:px-8 flex items-center justify-between sticky top-0 z-50 shadow-md gap-2">
+        <div className="flex items-center space-x-3 sm:space-x-4">
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white p-1 shadow-md border border-emerald-500/50 flex items-center justify-center shrink-0">
             <img
               src="/logo-shirothul-fuqoha.png"
               alt="Logo PP Salafiyah Shirothul Fuqoha"
@@ -552,36 +552,36 @@ export default function PetugasDashboardPage() {
           </div>
           <div>
             <div className="flex items-center space-x-2">
-              <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-400 bg-emerald-950/80 px-2 py-0.5 rounded border border-emerald-800">
+              <span className="text-[9px] sm:text-[10px] font-mono font-bold uppercase tracking-wider text-emerald-400 bg-emerald-950/80 px-1.5 sm:px-2 py-0.5 rounded border border-emerald-800">
                 Workstation Petugas
               </span>
-              <span className="hidden sm:inline text-xs text-slate-400 font-mono">
+              <span className="hidden md:inline text-xs text-slate-400 font-mono">
                 PP Salafiyah Shirothul Fuqoha&apos; Malang
               </span>
             </div>
-            <h1 className="text-base sm:text-lg font-bold text-white tracking-tight">
+            <h1 className="text-sm sm:text-base md:text-lg font-bold text-white tracking-tight leading-tight">
               Portal Penanganan Laporan &amp; Data Santri
             </h1>
           </div>
         </div>
 
         {/* Action Links */}
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center space-x-1.5 sm:space-x-3 shrink-0">
           <Button
             onClick={loadData}
             variant="ghost"
             size="sm"
-            className="text-slate-400 hover:text-white hover:bg-slate-800"
+            className="text-slate-400 hover:text-white hover:bg-slate-800 px-2 sm:px-3"
             title="Refresh Data"
           >
-            <RefreshCw className={`w-4 h-4 ${loading ? "animate-spin" : ""}`} />
-            <span className="hidden md:inline ml-1.5 text-xs">Sinkron</span>
+            <RefreshCw className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${loading ? "animate-spin" : ""}`} />
+            <span className="hidden sm:inline ml-1 text-xs">Sinkron</span>
           </Button>
 
           <Link
             href="/kts"
             target="_blank"
-            className="hidden sm:inline-flex items-center space-x-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors"
+            className="hidden sm:inline-flex items-center space-x-1.5 text-xs font-semibold px-2.5 sm:px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors"
           >
             <Printer className="w-3.5 h-3.5 text-sky-400" />
             <span>Cetak KTS</span>
@@ -589,85 +589,86 @@ export default function PetugasDashboardPage() {
 
           <Link
             href="/"
-            className="inline-flex items-center space-x-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-all border border-slate-700 active:scale-95"
+            className="inline-flex items-center space-x-1 text-xs font-semibold px-2.5 sm:px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-all border border-slate-700 active:scale-95"
           >
             <span>Kiosk</span>
-            <ExternalLink className="w-3.5 h-3.5" />
+            <ExternalLink className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
           </Link>
 
           <Button
             onClick={handleLockDashboard}
             variant="ghost"
             size="sm"
-            className="text-rose-400 hover:text-rose-300 hover:bg-rose-950/60 border border-rose-900/50"
+            className="text-rose-400 hover:text-rose-300 hover:bg-rose-950/60 border border-rose-900/50 px-2 sm:px-3"
             title="Kunci Dashboard Petugas"
           >
-            <Lock className="w-3.5 h-3.5 mr-1" />
-            <span className="text-xs">Kunci</span>
+            <Lock className="w-3.5 h-3.5 sm:mr-1" />
+            <span className="hidden sm:inline text-xs">Kunci</span>
           </Button>
         </div>
       </header>
 
       {/* 2. Top Summary KPI Cards */}
-      <section className="bg-slate-950/60 border-b border-slate-800 px-4 sm:px-8 py-5">
-        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
-          <Card className="bg-slate-900 border-slate-800 p-4 rounded-2xl flex items-center justify-between">
+      <section className="bg-slate-950/60 border-b border-slate-800 px-3 sm:px-8 py-3.5 sm:py-5">
+        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+          <Card className="bg-slate-900 border-slate-800 p-3 sm:p-4 rounded-2xl flex items-center justify-between">
             <div>
-              <span className="text-[11px] font-mono uppercase text-slate-400">Total Tiket Krisis</span>
-              <div className="text-2xl sm:text-3xl font-mono font-bold text-rose-400 mt-1">
+              <span className="text-[10px] sm:text-[11px] font-mono uppercase text-slate-400">Total Tiket Krisis</span>
+              <div className="text-xl sm:text-2xl md:text-3xl font-mono font-bold text-rose-400 mt-0.5 sm:mt-1">
                 {crisisTickets.length}
               </div>
-              <span className="text-[10px] text-slate-500">
-                {crisisTickets.filter((c) => c.status === "MASUK").length} Menunggu Penanganan
+              <span className="text-[9px] sm:text-[10px] text-slate-500 block truncate">
+                {crisisTickets.filter((c) => c.status === "MASUK").length} Menunggu Tindakan
               </span>
             </div>
-            <div className="w-10 h-10 rounded-xl bg-rose-950/70 border border-rose-800/80 flex items-center justify-center text-rose-400">
-              <ShieldAlert className="w-5 h-5" />
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-rose-950/70 border border-rose-800/80 flex items-center justify-center text-rose-400 shrink-0 ml-2">
+              <ShieldAlert className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
           </Card>
 
-          <Card className="bg-slate-900 border-slate-800 p-4 rounded-2xl flex items-center justify-between">
+          <Card className="bg-slate-900 border-slate-800 p-3 sm:p-4 rounded-2xl flex items-center justify-between">
             <div>
-              <span className="text-[11px] font-mono uppercase text-slate-400">Laporan Sarpras</span>
-              <div className="text-2xl sm:text-3xl font-mono font-bold text-amber-400 mt-1">
+              <span className="text-[10px] sm:text-[11px] font-mono uppercase text-slate-400">Laporan Sarpras</span>
+              <div className="text-xl sm:text-2xl md:text-3xl font-mono font-bold text-amber-400 mt-0.5 sm:mt-1">
                 {sarprasTickets.length}
               </div>
-              <span className="text-[10px] text-slate-500">
+              <span className="text-[9px] sm:text-[10px] text-slate-500 block truncate">
                 {sarprasTickets.filter((s) => s.status !== "Selesai Dikerjakan").length} Belum Tuntas
               </span>
             </div>
-            <div className="w-10 h-10 rounded-xl bg-amber-950/70 border border-amber-800/80 flex items-center justify-center text-amber-400">
-              <Wrench className="w-5 h-5" />
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-amber-950/70 border border-amber-800/80 flex items-center justify-center text-amber-400 shrink-0 ml-2">
+              <Wrench className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
           </Card>
 
-          <Card className="bg-slate-900 border-slate-800 p-4 rounded-2xl flex items-center justify-between">
+          <Card className="bg-slate-900 border-slate-800 p-3 sm:p-4 rounded-2xl flex items-center justify-between">
             <div>
-              <span className="text-[11px] font-mono uppercase text-slate-400">Santri Terdata</span>
-              <div className="text-2xl sm:text-3xl font-mono font-bold text-sky-400 mt-1">
+              <span className="text-[10px] sm:text-[11px] font-mono uppercase text-slate-400">Santri Terdata</span>
+              <div className="text-xl sm:text-2xl md:text-3xl font-mono font-bold text-sky-400 mt-0.5 sm:mt-1">
                 {students.length}
               </div>
-              <span className="text-[10px] text-slate-500">Memiliki Barcode KTS Aktif</span>
+              <span className="text-[9px] sm:text-[10px] text-slate-500 block truncate">Barcode KTS Aktif</span>
             </div>
-            <div className="w-10 h-10 rounded-xl bg-sky-950/70 border border-sky-800/80 flex items-center justify-center text-sky-400">
-              <Users className="w-5 h-5" />
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-sky-950/70 border border-sky-800/80 flex items-center justify-center text-sky-400 shrink-0 ml-2">
+              <Users className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
           </Card>
 
-          <Card className="bg-slate-900 border-slate-800 p-4 rounded-2xl flex items-center justify-between">
+          <Card className="bg-slate-900 border-slate-800 p-3 sm:p-4 rounded-2xl flex items-center justify-between">
             <div>
-              <span className="text-[11px] font-mono uppercase text-slate-400">Status Server</span>
-              <div className="text-2xl sm:text-3xl font-mono font-bold text-emerald-400 mt-1">
+              <span className="text-[10px] sm:text-[11px] font-mono uppercase text-slate-400">Status Server</span>
+              <div className="text-xl sm:text-2xl md:text-3xl font-mono font-bold text-emerald-400 mt-0.5 sm:mt-1">
                 ONLINE
               </div>
-              <span className="text-[10px] text-emerald-400/80">SQLite LAN On-Premise</span>
+              <span className="text-[9px] sm:text-[10px] text-emerald-400/80 block truncate">SQLite LAN LAN</span>
             </div>
-            <div className="w-10 h-10 rounded-xl bg-emerald-950/70 border border-emerald-800/80 flex items-center justify-center text-emerald-400">
-              <Building2 className="w-5 h-5" />
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-emerald-950/70 border border-emerald-800/80 flex items-center justify-center text-emerald-400 shrink-0 ml-2">
+              <Building2 className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
           </Card>
         </div>
       </section>
+
 
       {/* 3. Main Navigation Tabs */}
       <div className="bg-slate-950/40 border-b border-slate-800 px-4 sm:px-8">

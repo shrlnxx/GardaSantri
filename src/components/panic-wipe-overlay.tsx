@@ -52,7 +52,7 @@ export function PanicWipeOverlay({ isVisible, onDismiss }: PanicWipeOverlayProps
       role="alertdialog"
       aria-modal="true"
       onClick={onDismiss}
-      className="fixed inset-0 z-[150] bg-[#031b11] text-slate-100 flex flex-col justify-between p-6 sm:p-10 select-none cursor-pointer overflow-hidden animate-in fade-in duration-0"
+      className="fixed inset-0 z-[150] bg-[#031b11] text-slate-100 flex flex-col justify-between p-4 sm:p-8 md:p-10 select-none cursor-pointer overflow-y-auto animate-in fade-in duration-0"
     >
       {/* Background Architectural Islamic Arabesque Motif & Radial Lighting */}
       <div
@@ -73,13 +73,13 @@ export function PanicWipeOverlay({ isVisible, onDismiss }: PanicWipeOverlayProps
       {/* Main Content Container */}
       <div
         onClick={(e) => e.stopPropagation()}
-        className="w-full max-w-6xl mx-auto flex flex-col justify-between h-full relative z-10"
+        className="w-full max-w-6xl mx-auto flex flex-col justify-between min-h-full relative z-10 py-2 sm:py-0"
       >
         {/* 1. Header: Authentic Official Logo & Live Clock */}
-        <header className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-emerald-900/50 gap-4">
-          <div className="flex items-center space-x-4">
+        <header className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 sm:pb-6 border-b border-emerald-900/50 gap-3 sm:gap-4">
+          <div className="flex items-center space-x-3 sm:space-x-4">
             {/* Official Logo Crest Container */}
-            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white p-1.5 shadow-xl shadow-emerald-950/80 border-2 border-emerald-500/40 flex items-center justify-center shrink-0">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-white p-1 sm:p-1.5 shadow-xl shadow-emerald-950/80 border-2 border-emerald-500/40 flex items-center justify-center shrink-0">
               <Image
                 src="/logo-shirothul-fuqoha.png"
                 alt="Logo Pondok Pesantren Salafiyah Shirothul Fuqoha Malang"
@@ -92,61 +92,61 @@ export function PanicWipeOverlay({ isVisible, onDismiss }: PanicWipeOverlayProps
 
             <div>
               <div className="flex items-center space-x-2">
-                <span className="text-[10px] font-bold uppercase tracking-widest text-sky-400 bg-sky-950/60 px-2 py-0.5 rounded border border-sky-800/60">
+                <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-sky-400 bg-sky-950/60 px-2 py-0.5 rounded border border-sky-800/60">
                   Pesantren Salafiyah
                 </span>
-                <span className="text-[10px] text-emerald-400 font-medium tracking-wider">
+                <span className="text-[9px] sm:text-[10px] text-emerald-400 font-medium tracking-wider">
                   Malang • Jawa Timur
                 </span>
               </div>
-              <h1 className="text-lg sm:text-2xl font-bold tracking-tight text-white mt-1">
+              <h1 className="text-base sm:text-2xl font-bold tracking-tight text-white mt-1">
                 Pondok Pesantren Salafiyah Shirothul Fuqoha&apos;
               </h1>
-              <p className="text-xs text-emerald-300/80 font-medium">
+              <p className="text-[11px] sm:text-xs text-emerald-300/80 font-medium">
                 Pusat Informasi Waktu Ibadah &amp; Mutiara Hikmah Santri
               </p>
             </div>
           </div>
 
           <div className="sm:text-right flex sm:flex-col justify-between items-baseline sm:items-end">
-            <div className="flex items-baseline space-x-2">
-              <span className="text-3xl sm:text-5xl font-mono font-bold tracking-tight text-sky-100 tabular-nums">
+            <div className="flex items-baseline space-x-1.5 sm:space-x-2">
+              <span className="text-2xl sm:text-5xl font-mono font-bold tracking-tight text-sky-100 tabular-nums">
                 {clockString}
               </span>
-              <span className="text-xs font-semibold text-sky-400 font-mono">WIB</span>
+              <span className="text-[10px] sm:text-xs font-semibold text-sky-400 font-mono">WIB</span>
             </div>
-            <p className="text-xs text-emerald-300/80 tracking-wider mt-1 font-medium">
+            <p className="text-[10px] sm:text-xs text-emerald-300/80 tracking-wider mt-0.5 sm:mt-1 font-medium">
               {dateString}
             </p>
           </div>
         </header>
 
         {/* 2. Centerpiece: Sacred Reflection Plaque Harmonized with Logo Identity */}
-        <section className="my-auto py-6 sm:py-8 max-w-4xl mx-auto w-full text-center flex flex-col items-center">
+        <section className="my-auto py-4 sm:py-8 max-w-4xl mx-auto w-full text-center flex flex-col items-center">
           {/* Subtle Gilded Label matched to the Logo's Yellow Banner */}
-          <div className="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-emerald-950/80 border border-amber-500/40 text-[11px] font-medium text-amber-300 tracking-wider mb-5 shadow-sm">
+          <div className="inline-flex items-center space-x-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-emerald-950/80 border border-amber-500/40 text-[10px] sm:text-[11px] font-medium text-amber-300 tracking-wider mb-3 sm:mb-5 shadow-sm">
             <span>Kalam Mutiara • Doa Kebaikan Dunia &amp; Akhirat</span>
           </div>
 
           {/* Basmalah */}
-          <div className="py-2">
-            <p className="font-arabic text-3xl sm:text-5xl text-amber-100/95 leading-relaxed tracking-wide drop-shadow-sm">
+          <div className="py-1 sm:py-2">
+            <p className="font-arabic text-2xl sm:text-4xl md:text-5xl text-amber-100/95 leading-relaxed tracking-wide drop-shadow-sm">
               بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
             </p>
           </div>
 
           {/* Main Ayat Calligraphy */}
-          <div className="py-2 px-4 max-w-3xl">
-            <p className="font-arabic text-2xl sm:text-4xl text-emerald-50 leading-[1.8] sm:leading-[2] tracking-normal font-normal">
+          <div className="py-1 sm:py-2 px-2 sm:px-4 max-w-3xl">
+            <p className="font-arabic text-xl sm:text-3xl md:text-4xl text-emerald-50 leading-[1.8] sm:leading-[2] tracking-normal font-normal">
               رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ
             </p>
           </div>
 
           {/* Translation */}
-          <p className="text-xs sm:text-sm text-emerald-200/80 max-w-2xl mt-3 leading-relaxed font-light italic px-4">
+          <p className="text-[11px] sm:text-sm text-emerald-200/80 max-w-2xl mt-2 sm:mt-3 leading-relaxed font-light italic px-2 sm:px-4">
             &ldquo;Wahai Tuhan kami, anugerahkanlah kepada kami kebaikan di dunia dan kebaikan di akhirat, serta peliharalah kami dari siksa api neraka.&rdquo;
           </p>
-          <span className="text-[11px] text-amber-300/80 uppercase tracking-widest font-semibold mt-2">
+          <span className="text-[10px] sm:text-[11px] text-amber-300/80 uppercase tracking-widest font-semibold mt-1 sm:mt-2">
             Surah Al-Baqarah : 201
           </span>
 

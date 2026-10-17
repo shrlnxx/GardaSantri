@@ -121,19 +121,19 @@ export function TokenTrackerModal({
   };
 
   return (
-    <div className="fixed inset-0 z-[130] bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-150">
-      <div className="bg-slate-900 border border-slate-700/80 text-white rounded-3xl max-w-lg w-full p-6 shadow-2xl relative flex flex-col justify-between max-h-[90vh] overflow-y-auto">
+    <div className="fixed inset-0 z-[130] bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-150">
+      <div className="bg-slate-900 border border-slate-700/80 text-white rounded-3xl max-w-lg w-full p-4 sm:p-6 shadow-2xl relative flex flex-col justify-between max-h-[92vh] overflow-y-auto">
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-slate-800 pb-4">
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 rounded-2xl bg-emerald-600/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center">
-              <Search className="w-5 h-5" />
+        <div className="flex items-center justify-between border-b border-slate-800 pb-3 sm:pb-4 gap-2">
+          <div className="flex items-center space-x-2.5 sm:space-x-3">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-emerald-600/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center shrink-0">
+              <Search className="w-4 h-4 sm:w-5 sm:h-5" />
             </div>
             <div>
-              <h3 className="font-bold text-base text-slate-100">
+              <h3 className="font-bold text-sm sm:text-base text-slate-100 leading-tight">
                 Pelacak Status Tiket Konseling
               </h3>
-              <p className="text-xs text-slate-400 font-mono">
+              <p className="text-[11px] sm:text-xs text-slate-400 font-mono mt-0.5 leading-tight">
                 Pemeriksaan Tindak Lanjut via Token 8-Karakter
               </p>
             </div>
@@ -143,7 +143,7 @@ export function TokenTrackerModal({
               handleClear();
               onClose();
             }}
-            className="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center transition-colors"
+            className="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center transition-colors shrink-0"
           >
             <X className="w-4 h-4" />
           </button>

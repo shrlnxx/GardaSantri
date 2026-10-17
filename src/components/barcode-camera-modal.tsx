@@ -196,21 +196,21 @@ export function BarcodeCameraModal({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[120] bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 animate-in fade-in duration-200">
-      <div className="bg-slate-900 border border-slate-700/80 text-white rounded-3xl max-w-lg w-full p-6 shadow-2xl relative overflow-hidden flex flex-col justify-between max-h-[92vh]">
+    <div className="fixed inset-0 z-[120] bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 animate-in fade-in duration-200">
+      <div className="bg-slate-900 border border-slate-700/80 text-white rounded-3xl max-w-lg w-full p-4 sm:p-6 shadow-2xl relative overflow-y-auto flex flex-col justify-between max-h-[94vh]">
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-slate-800 pb-4">
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 rounded-2xl bg-rose-600/20 border border-rose-500/40 text-rose-400 flex items-center justify-center relative">
-              <Camera className="w-5 h-5 animate-pulse" />
+        <div className="flex items-center justify-between border-b border-slate-800 pb-3 sm:pb-4 gap-2">
+          <div className="flex items-center space-x-2.5 sm:space-x-3">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-rose-600/20 border border-rose-500/40 text-rose-400 flex items-center justify-center relative shrink-0">
+              <Camera className="w-4 h-4 sm:w-5 sm:h-5 animate-pulse" />
               <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-rose-500"></span>
               </span>
             </div>
             <div>
-              <h3 className="font-bold text-base text-slate-100">{title}</h3>
-              <p className="text-xs text-slate-400 font-mono">{subtitle}</p>
+              <h3 className="font-bold text-sm sm:text-base text-slate-100 leading-tight">{title}</h3>
+              <p className="text-[11px] sm:text-xs text-slate-400 font-mono mt-0.5 leading-tight">{subtitle}</p>
             </div>
           </div>
           <button
@@ -218,14 +218,14 @@ export function BarcodeCameraModal({
               stopCamera();
               onClose();
             }}
-            className="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center transition-colors"
+            className="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white flex items-center justify-center transition-colors shrink-0"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
 
         {/* Camera Viewport Container */}
-        <div className="relative my-4 flex flex-col items-center">
+        <div className="relative my-3 sm:my-4 flex flex-col items-center">
           <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden bg-black border-2 border-emerald-500/40 shadow-inner relative flex items-center justify-center">
             {/* Html5Qrcode target element */}
             <div id="html5qr-code-full-region" className="w-full h-full"></div>
@@ -234,11 +234,11 @@ export function BarcodeCameraModal({
             {scannerActive && !lastScanned && (
               <div className="absolute inset-0 pointer-events-none flex flex-col items-center justify-center">
                 {/* Center barcode guidance box */}
-                <div className="w-64 h-32 border-2 border-dashed border-emerald-400/70 rounded-xl relative overflow-hidden shadow-[0_0_15px_rgba(16,185,129,0.2)]">
+                <div className="w-56 sm:w-64 h-28 sm:h-32 border-2 border-dashed border-emerald-400/70 rounded-xl relative overflow-hidden shadow-[0_0_15px_rgba(16,185,129,0.2)]">
                   {/* Sweeping Laser Line */}
                   <div className="absolute inset-x-0 h-0.5 bg-rose-500 shadow-[0_0_10px_#f43f5e,0_0_20px_#f43f5e] animate-laser-sweep"></div>
                 </div>
-                <span className="mt-2 text-[11px] font-mono text-emerald-400 bg-black/60 px-3 py-1 rounded-full border border-emerald-500/40">
+                <span className="mt-2 text-[10px] sm:text-[11px] font-mono text-emerald-400 bg-black/60 px-3 py-1 rounded-full border border-emerald-500/40 text-center">
                   Arahkan Barcode KTS ke dalam kotak laser
                 </span>
               </div>
@@ -246,12 +246,12 @@ export function BarcodeCameraModal({
 
             {/* Scan Success Overlay */}
             {lastScanned && (
-              <div className="absolute inset-0 bg-emerald-950/90 flex flex-col items-center justify-center p-6 text-center animate-in zoom-in-95 duration-200">
-                <CheckCircle2 className="w-16 h-16 text-emerald-400 animate-bounce mb-2" />
-                <span className="text-xs font-mono uppercase tracking-widest text-emerald-300 font-bold">
+              <div className="absolute inset-0 bg-emerald-950/90 flex flex-col items-center justify-center p-4 sm:p-6 text-center animate-in zoom-in-95 duration-200">
+                <CheckCircle2 className="w-12 h-12 sm:w-16 sm:h-16 text-emerald-400 animate-bounce mb-2" />
+                <span className="text-[10px] sm:text-xs font-mono uppercase tracking-widest text-emerald-300 font-bold">
                   Barcode Terdeteksi!
                 </span>
-                <span className="text-xl font-mono font-bold text-white mt-1 break-all bg-emerald-900/60 px-4 py-1 rounded-xl border border-emerald-500/50">
+                <span className="text-base sm:text-xl font-mono font-bold text-white mt-1 break-all bg-emerald-900/60 px-3 sm:px-4 py-1 rounded-xl border border-emerald-500/50">
                   {lastScanned}
                 </span>
               </div>
@@ -260,7 +260,7 @@ export function BarcodeCameraModal({
 
           {/* Error notice if camera fails */}
           {errorMessage && (
-            <div className="mt-3 w-full p-3 bg-amber-500/10 border border-amber-500/30 rounded-xl text-amber-300 text-xs flex items-start space-x-2">
+            <div className="mt-3 w-full p-2.5 sm:p-3 bg-amber-500/10 border border-amber-500/30 rounded-xl text-amber-300 text-xs flex items-start space-x-2">
               <AlertCircle className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
               <div className="leading-tight">
                 <strong>Catatan Akses Kamera:</strong> {errorMessage}
@@ -270,14 +270,14 @@ export function BarcodeCameraModal({
         </div>
 
         {/* Controls: Switch Camera & Upload Fallback */}
-        <div className="space-y-3 pt-2 border-t border-slate-800">
-          <div className="flex items-center justify-between gap-2">
+        <div className="space-y-2.5 sm:space-y-3 pt-2 border-t border-slate-800">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2">
             {cameras.length > 1 && (
               <Button
                 variant="outline"
                 size="sm"
                 onClick={switchCamera}
-                className="text-slate-300 border-slate-700 hover:bg-slate-800 flex items-center space-x-1.5"
+                className="text-slate-300 border-slate-700 hover:bg-slate-800 flex items-center justify-center space-x-1.5 w-full sm:w-auto"
               >
                 <SwitchCamera className="w-3.5 h-3.5" />
                 <span>Ganti Kamera</span>
@@ -288,7 +288,7 @@ export function BarcodeCameraModal({
               variant="outline"
               size="sm"
               onClick={() => fileInputRef.current?.click()}
-              className="text-slate-300 border-slate-700 hover:bg-slate-800 flex items-center space-x-1.5"
+              className="text-slate-300 border-slate-700 hover:bg-slate-800 flex items-center justify-center space-x-1.5 w-full sm:w-auto"
             >
               <Upload className="w-3.5 h-3.5" />
               <span>Upload Gambar Barcode</span>
