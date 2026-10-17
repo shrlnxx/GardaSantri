@@ -1,0 +1,20 @@
+services:
+  sovereign-kiosk:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sovereign-kiosk-app
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_PATH=/data/sovereign-kiosk.db
+      - OFFLINE_LAN_MODE=true
+    volumes:
+      - ./data:/data
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
